@@ -1,0 +1,17 @@
+---
+import { getAllPokemons } from "../services/api";
+import type { AllPokemons } from "../types/api";
+import PokeCard from "./PokeCard.astro";
+
+const pokemons = await getAllPokemons(151);
+---
+
+<div
+  class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+>
+  {
+    pokemons.map((pokemon) => (
+      <PokeCard name={pokemon.name} />
+    ))
+  }
+</div>

@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getAllPokemons, getPokemon } from "../../services/api";
+
+const { name } = Astro.params as { name: string };
+
+let pokemon;
+if (name) {
+  pokemon = await getPokemon(name);
+}
+
+export async function getStaticPaths() {
+  const pokemons = await getAllPokemons(251);
+
+  return pokemons.map((pokemon) => ({
+    params: { name: pokemon.name },
+  }));
+}
+console.log(pokemon);
+---
+
+<Layout title={`${name} - Pokedex #${pokemon?.id}`}>
+  <div class="flex justify-center">
+    <article class="my-10 flex flex-col bg-white rounded-lg shadow-lg p-5 w-90 md:w-96 lg:w-96 xl:w-96">  
+      <h1 class="text-3xl font-semibold text-center first-letter:uppercase">{name}</h1>
+      <div class="flex justify-center">
+        <picture>
+          <img
+            class="rounded-lg w-60"
+            src={pokemon?.sprites.other?.["official-artwork"]?.front_default || ""}
+            alt={`Imagen de ${name}`}
+          />
+        </picture>
+      </div>
+      <div class="px-6 mb-5">
+        {
+          pokemon?.stats.map((stat) => (
+            <div class="flex flex-row justify-between">
+              <p class="font-semibold">{stat.stat.name}</p>
+              <p class="font-semibold">{stat.base_stat}</p>
+            </div>
+          ))
+        }
+      </div>
+    </article>
+  </div>
+</Layout>

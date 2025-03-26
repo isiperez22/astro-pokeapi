@@ -1,0 +1,15 @@
+---
+import HeaderButton from "./HeaderButton.astro";
+
+---
+
+<header class="p-4 mx-auto w-full lg:p-8 bg-red-500">
+  <div class="mx-auto flex flex-col items-center">
+    <img class="w-82" src="/pokemon-logo.png" alt="Logo ofical de pokemon">
+  </div>
+  <nav class="flex flex-col w-full mt-10 justify-between items-center md:flex-row">
+    <HeaderButton class="text-white" enlace="/" >Primera generacion</HeaderButton>
+    <HeaderButton class="text-white" enlace="/johto">Segunda generacion</HeaderButton>
+    <HeaderButton class="text-white" enlace="/about">Acerca de</HeaderButton>
+  </nav>
+</header>

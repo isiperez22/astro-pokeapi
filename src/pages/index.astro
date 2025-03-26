@@ -1,11 +1,13 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Kanto from '../components/Kanto.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Pokemon primera generacion">
+	<main class="p-4 mx-auto w-full lg:p-8">
+		<Kanto/>
+	</main>
 </Layout>
